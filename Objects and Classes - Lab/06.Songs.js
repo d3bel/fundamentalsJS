@@ -5,20 +5,24 @@ function songs(array) {
       this.name = name;
       this.time = time;
     }
+    songPlayList() {
+      console.log(`${this.name}`);
+    }
   }
   let arrayOfSongList = [];
   let songNums = array.shift();
   let typeSong = array.pop();
- for (let currSong of array) {
+  for (let currSong of array) {
     let typeNameTime = currSong.split("_");
+    let currentSong = new Song(typeNameTime[0], typeNameTime[1]);
     if (typeNameTime[0] === typeSong) {
-      arrayOfSongList.push(typeNameTime[1]);
+      arrayOfSongList.push(currentSong);
     } else if (typeSong === "all") {
-      arrayOfSongList.push(typeNameTime[1]);
+      arrayOfSongList.push(currentSong);
     }
   }
   for (let songList of arrayOfSongList) {
-   console.log(`${songList}`);
+    songList.songPlayList();
   }
 }
 songs([
