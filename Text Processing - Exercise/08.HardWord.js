@@ -1,15 +1,20 @@
+
 function hardWord(array) {
   let sentence = array.shift();
   let newArray = array[0];
-  let arrayOfUnderscore = [];
-  newArray.forEach((word) => {
-    let currLenght = "_".repeat(word.length);
-    arrayOfUnderscore.push(currLenght);
-  });
-  arrayOfUnderscore.sort((a, b) => b.length - a.length);
-  newArray.sort((a, b) => b.length - a.length);
-  for (let i = 0; i < arrayOfUnderscore.length; i++) {
-    sentence = sentence.replace(arrayOfUnderscore[i], newArray[i]);
+  let underscore = "";
+  for (let i = 0; i < sentence.length; i++) {
+    if (sentence[i] === "_" && sentence[i + 1] === "_") {
+      underscore += sentence[i];
+    } else if (sentence[i] === "_" && sentence[i + 1] != "_") {
+      underscore += sentence[i];
+      for (let currW of newArray) {
+        if (currW.length === underscore.length) {
+          sentence = sentence.replace(underscore, currW);
+          underscore = "";
+        }
+      }
+    }
   }
   console.log(sentence);
 }
