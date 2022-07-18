@@ -3,11 +3,7 @@ function melrahShake(array) {
   let pattern = array[1];
 
   while (pattern.length > 0) {
-    if (
-      str.indexOf(pattern) !== str.lastIndexOf(pattern) &&
-      str.indexOf(pattern) > -1 &&
-      str.lastIndexOf(pattern) > -1
-    ) {
+    if (str.indexOf(pattern) !== str.lastIndexOf(pattern)) {
       let firstPattern = str.indexOf(pattern);
       let lastPattern = str.lastIndexOf(pattern);
       str = str.split("");
